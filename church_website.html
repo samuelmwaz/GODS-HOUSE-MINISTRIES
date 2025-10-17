@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOD'S HOUSE MINISTRIES - Lusaka, Zambia | DUAL THEME</title>
+    <title>GOD'S HOUSE MINISTRIES - Lusaka, Zambia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ------------------------------------------- */
-        /* BASE STYLES & COLOR VARIABLES */
-        /* ------------------------------------------- */
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500&display=swap');
         
         * {
@@ -17,9 +14,7 @@
             box-sizing: border-box;
         }
 
-        /* CSS VARIABLES (Default: LIGHT MODE - Classic Theme / SUN RISE) */
         :root {
-            /* LIGHT MODE */
             --bg-body-gradient: linear-gradient(135deg, #f7f7f7 0%, #ffffff 100%); 
             --bg-primary: #ffffff; 
             --bg-secondary: #f0f0f0; 
@@ -31,12 +26,10 @@
             --gold-accent: #b8860b; 
             --gold-gradient: linear-gradient(90deg, #b8860b, #daa520);
             --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            --line-color: rgba(0, 0, 0, 0.15); /* Used for bubbles in Light Mode */
+            --line-color: rgba(0, 0, 0, 0.15);
         }
 
-        /* CSS VARIABLES (DARK MODE - LUXURY Theme / SUN SET) */
         body.dark-mode {
-            /* LUXURY DARK MODE */
             --bg-body-gradient: linear-gradient(135deg, #0f0f0f 0%, #1e1e1e 100%); 
             --bg-primary: #1a1a1a; 
             --bg-secondary: #2c2c2c; 
@@ -48,31 +41,29 @@
             --gold-accent: #FFD700; 
             --gold-gradient: linear-gradient(90deg, #ffd700, #b8860b);
             --header-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
-            --line-color: rgba(255, 215, 0, 0.1); /* Used for bubbles in Dark Mode (subtle gold) */
+            --line-color: rgba(255, 215, 0, 0.1);
         }
 
         body {
             font-family: 'Lato', sans-serif;
             background: var(--bg-body-gradient); 
             color: var(--text-primary); 
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
             transition: background 0.5s ease, color 0.5s ease;
-            position: relative; 
+            position: relative;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
 
-        /* ------------------------------------------- */
-        /* HEADER (NAV) STYLES */
-        /* ------------------------------------------- */
+        /* HEADER/NAV - Mobile Optimized */
         .nav {
             background: var(--bg-secondary);
-            padding: 1rem 0; 
+            padding: 0.75rem 0; 
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
             position: sticky; 
@@ -83,24 +74,62 @@
 
         .nav-container {
             display: flex;
-            justify-content: center;
+            /* CHANGE: Center all items in the container */
+            justify-content: center; 
             align-items: center;
-            flex-wrap: wrap;
-            max-width: 1600px;
-            margin: 0 auto;
             padding: 0 1rem;
+            flex-wrap: wrap;
+            /* Added for absolute positioning of theme-switch */
+            position: relative; 
+        }
+        
+        /* NEW: Position theme switch on the right for non-mobile views */
+        .nav-container .theme-switch {
+            position: absolute;
+            right: 1rem; 
+            top: 50%;
+            transform: translateY(-50%);
+            /* Ensure it appears above the menu links on large screens if there's overlap */
+            z-index: 10; 
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            /* Move hamburger to the left for consistency */
+            position: absolute; 
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--gold-accent);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            /* This centers the links themselves within the nav-links container */
+            justify-content: center; 
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .nav a {
             color: var(--text-primary);
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 500; 
-            letter-spacing: 2px; 
-            padding: 0.5rem 1rem;
-            margin: 0 0.5rem;
-            position: relative;
+            letter-spacing: 1px; 
+            padding: 0.4rem 0.6rem;
             transition: color 0.3s ease;
         }
         
@@ -109,31 +138,29 @@
             text-shadow: 0 0 5px var(--gold-accent); 
         }
 
-        /* Theme Switch Button */
         .theme-switch {
             background: var(--gold-accent);
             color: var(--bg-secondary);
             border: none;
             padding: 0.5rem 0.8rem;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
             border-radius: 5px;
-            margin-left: 20px;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             font-weight: 700;
+            white-space: nowrap;
         }
+
         .theme-switch:hover {
             opacity: 0.9;
             box-shadow: 0 0 10px var(--gold-accent);
         }
-        
-        /* ------------------------------------------- */
-        /* HERO SECTION (Dramatic Look) */
-        /* ------------------------------------------- */
+
+        /* HERO - Mobile Optimized */
         .hero {
-            padding: 10rem 0 6rem; 
+            padding: 4rem 0 3rem; 
             background: var(--bg-primary);
             text-align: center;
             position: relative;
@@ -144,34 +171,35 @@
                     rgba(30, 30, 30, 0.6) 50%, 
                     rgba(0, 0, 0, 0.9) 100% 
                 ), 
-                url('https://via.placeholder.com/1600x500/2c2c2c/FFD700?text=Grand+Church+Facade+with+Spotlights') no-repeat center center;
+                url('https://via.placeholder.com/800x400/2c2c2c/FFD700?text=Church') no-repeat center center;
             background-size: cover;
             z-index: 10; 
         }
 
         .church-logo img {
-            max-width: 250px; 
+            max-width: 150px; 
             height: auto;
-            margin-bottom: 1.5rem; 
+            margin-bottom: 1rem; 
             filter: drop-shadow(0 0 15px var(--gold-accent)); 
         }
         
         .tagline {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem; 
+            font-size: 1.3rem; 
             color: var(--gold-accent);
-            max-width: 900px;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1rem;
             font-weight: 400;
-            letter-spacing: 3px; 
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); 
+            letter-spacing: 2px; 
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            padding: 0 1rem;
         }
         
         .address {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--text-secondary);
-            margin-bottom: 3rem; 
+            margin-bottom: 2rem; 
             font-weight: 300;
+            padding: 0 1rem;
         }
 
         .cta-button {
@@ -179,16 +207,17 @@
             background: var(--gold-gradient);
             color: #1a1a1a; 
             border: none;
-            padding: 1.2rem 3rem; 
-            font-size: 1.1rem;
-            letter-spacing: 2px;
+            padding: 1rem 2rem; 
+            font-size: 0.9rem;
+            letter-spacing: 1px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 2px; 
             font-weight: 700; 
             text-decoration: none;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); 
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            margin: 0 1rem;
         }
 
         .cta-button:hover {
@@ -197,11 +226,9 @@
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); 
         }
 
-        /* ------------------------------------------- */
-        /* SECTION AND CARD STYLES */
-        /* ------------------------------------------- */
+        /* SECTIONS - Mobile Optimized */
         .section {
-            padding: 5rem 0; 
+            padding: 3rem 0; 
             background: var(--bg-primary);
             border-bottom: 1px solid var(--border-color);
             z-index: 10; 
@@ -210,24 +237,24 @@
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem; 
+            font-size: 2rem; 
             color: var(--text-primary);
             font-weight: 500; 
             margin-bottom: 1rem;
             text-align: center;
-            transition: color 0.5s ease; 
+            transition: color 0.5s ease;
+            padding: 0 1rem;
         }
         
-        /* SUN RISE EFFECT ON SECTION TITLE */
         body:not(.dark-mode) #home .section-title {
             animation: sun-rise-glow 3s ease-out forwards; 
         }
+
         body.dark-mode #home .section-title {
             animation: none;
             color: var(--text-primary); 
         }
         
-        /* Sun Rise Glow Keyframes */
         @keyframes sun-rise-glow {
             0% { 
                 color: var(--text-secondary); 
@@ -242,44 +269,44 @@
         .section-title:after {
             content: '';
             display: block;
-            width: 100px; 
+            width: 80px; 
             height: 3px; 
             background: var(--gold-gradient);
-            margin: 15px auto 3rem; 
+            margin: 15px auto 2rem; 
             box-shadow: 0 0 5px var(--gold-accent); 
         }
         
         .welcome-text {
             text-align: center;
             margin-bottom: 30px;
-            font-size: 1.2rem; 
+            font-size: 1rem; 
             color: var(--text-secondary);
-            max-width: 900px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
         }
         
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem; 
-            margin-top: 3rem;
+            grid-template-columns: 1fr;
+            gap: 2rem; 
+            margin-top: 2rem;
         }
         
         .ministry-card, .service-card {
             background: var(--bg-secondary);
-            padding: 2.5rem; 
+            padding: 1.5rem; 
             border-radius: 5px; 
             text-align: center;
             transition: all 0.4s ease-in-out;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
         }
 
         .ministry-card:hover, .service-card:hover {
-            transform: translateY(-8px); 
-            box-shadow: 0 15px 35px var(--shadow-color); 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px var(--shadow-color); 
             border-color: var(--gold-accent); 
         }
         
@@ -297,13 +324,13 @@
             font-weight: 600; 
             color: var(--gold-accent);
             margin-bottom: 0.5rem;
-            font-size: 1.8rem; 
+            font-size: 1.4rem; 
             text-shadow: 0 0 3px rgba(255, 215, 0, 0.5); 
         }
 
         .ministry-card p, .service-card p {
             color: var(--text-secondary);
-            font-size: 1.1rem; 
+            font-size: 1rem; 
             flex-grow: 1;
         }
 
@@ -311,19 +338,19 @@
             color: var(--gold-accent);
         }
         
-        /* ------------------------------------------- */
-        /* FOOTER & CONTACT STYLES (Unchanged) */
-        /* ------------------------------------------- */
+        /* CONTACT & FOOTER */
         .contact-info p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--text-secondary);
             margin-bottom: 1rem;
+            padding: 0 1rem;
         }
 
         .contact-info a {
             color: var(--gold-accent);
             text-decoration: none;
             font-weight: 500;
+            word-break: break-word;
         }
 
         .contact-info a:hover {
@@ -334,9 +361,9 @@
 
         .map-container {
             width: 100%;
-            height: 350px; 
+            height: 250px; 
             background-color: #000000; 
-            margin: 4rem 0;
+            margin: 2rem 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -344,24 +371,26 @@
             border: 2px solid var(--gold-accent); 
             color: var(--text-secondary);
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            padding: 1rem;
+            text-align: center;
         }
 
         .social-media {
-            margin-top: 3rem;
+            margin-top: 2rem;
             text-align: center;
         }
 
         .social-media p {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
             color: var(--gold-accent);
             font-weight: 500;
         }
 
         .social-media a {
             display: inline-block;
-            margin: 0 20px;
-            font-size: 36px; 
+            margin: 0 15px;
+            font-size: 32px; 
             color: var(--text-primary);
             transition: color 0.3s ease, transform 0.3s ease;
         }
@@ -375,7 +404,7 @@
         .footer {
             background: var(--bg-secondary);
             color: var(--text-secondary);
-            padding: 4rem 0;
+            padding: 2rem 1rem;
             text-align: center;
             border-top: 1px solid var(--gold-accent); 
             z-index: 10;
@@ -384,37 +413,10 @@
 
         .footer p {
             margin: 0.5rem 0;
+            font-size: 0.9rem;
         }
         
-        /* Responsive Adjustments (Unchanged) */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 6rem 0 4rem;
-            }
-            .tagline {
-                font-size: 1.5rem;
-            }
-            .section-title {
-                font-size: 2.5rem;
-            }
-            .nav-container {
-                flex-direction: column;
-            }
-            .nav a {
-                margin: 0.5rem 0;
-            }
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-            .theme-switch {
-                margin: 10px 0 0 0;
-            }
-        }
-
-        /* ------------------------------------------- */
-        /* FLOATING BUBBLE ANIMATION STYLES */
-        /* ------------------------------------------- */
-
+        /* BUBBLES - Optimized for mobile */
         .bubbles-container {
             position: fixed;
             top: 0;
@@ -432,44 +434,23 @@
             list-style: none;
             width: 20px;
             height: 20px;
-            /* Use radial gradient for a translucent, 3D bubble effect */
             background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), var(--line-color));
             border-radius: 50%;
-            bottom: -150px; /* Start far below the viewport */
+            bottom: -150px;
             opacity: 0;
             animation: float-up 15s linear infinite;
             box-shadow: 0 0 10px var(--line-color);
         }
 
-        /* Staggered animation delays and sizes for the bubbles (25 items) */
-        .bubbles li:nth-child(1) { left: 5%; width: 40px; height: 40px; animation-delay: 0s; animation-duration: 18s; }
-        .bubbles li:nth-child(2) { left: 15%; width: 25px; height: 25px; animation-delay: 2s; animation-duration: 22s; }
-        .bubbles li:nth-child(3) { left: 25%; width: 50px; height: 50px; animation-delay: 4s; animation-duration: 20s; }
-        .bubbles li:nth-child(4) { left: 35%; width: 30px; height: 30px; animation-delay: 1s; animation-duration: 25s; }
-        .bubbles li:nth-child(5) { left: 45%; width: 35px; height: 35px; animation-delay: 3s; animation-duration: 19s; }
-        .bubbles li:nth-child(6) { left: 55%; width: 45px; height: 45px; animation-delay: 5s; animation-duration: 23s; }
-        .bubbles li:nth-child(7) { left: 65%; width: 28px; height: 28px; animation-delay: 7s; animation-duration: 21s; }
-        .bubbles li:nth-child(8) { left: 75%; width: 38px; height: 38px; animation-delay: 6s; animation-duration: 24s; }
-        .bubbles li:nth-child(9) { left: 85%; width: 32px; height: 32px; animation-delay: 8s; animation-duration: 17s; }
-        .bubbles li:nth-child(10) { left: 95%; width: 42px; height: 42px; animation-delay: 9s; animation-duration: 26s; }
-        .bubbles li:nth-child(11) { left: 10%; width: 36px; height: 36px; animation-delay: 4s; animation-duration: 20s; }
-        .bubbles li:nth-child(12) { left: 20%; width: 48px; height: 48px; animation-delay: 2s; animation-duration: 22s; }
-        .bubbles li:nth-child(13) { left: 30%; width: 26px; height: 26px; animation-delay: 5s; animation-duration: 18s; }
-        .bubbles li:nth-child(14) { left: 50%; width: 44px; height: 44px; animation-delay: 3s; animation-duration: 24s; }
-        .bubbles li:nth-child(15) { left: 70%; width: 34px; height: 34px; animation-delay: 6s; animation-duration: 19s; }
-        .bubbles li:nth-child(16) { left: 80%; width: 40px; height: 40px; animation-delay: 1s; animation-duration: 21s; }
-        .bubbles li:nth-child(17) { left: 90%; width: 29px; height: 29px; animation-delay: 7s; animation-duration: 23s; }
-        .bubbles li:nth-child(18) { left: 12%; width: 46px; height: 46px; animation-delay: 4s; animation-duration: 25s; }
-        .bubbles li:nth-child(19) { left: 40%; width: 33px; height: 33px; animation-delay: 2s; animation-duration: 20s; }
-        .bubbles li:nth-child(20) { left: 60%; width: 37px; height: 37px; animation-delay: 8s; animation-duration: 22s; }
-        .bubbles li:nth-child(21) { left: 8%; width: 41px; height: 41px; animation-delay: 5s; animation-duration: 26s; }
-        .bubbles li:nth-child(22) { left: 22%; width: 31px; height: 31px; animation-delay: 3s; animation-duration: 18s; }
-        .bubbles li:nth-child(23) { left: 48%; width: 39px; height: 39px; animation-delay: 6s; animation-duration: 21s; }
-        .bubbles li:nth-child(24) { left: 68%; width: 27px; height: 27px; animation-delay: 1s; animation-duration: 24s; }
-        .bubbles li:nth-child(25) { left: 88%; width: 43px; height: 43px; animation-delay: 7s; animation-duration: 19s; }
+        .bubbles li:nth-child(1) { left: 5%; width: 30px; height: 30px; animation-delay: 0s; animation-duration: 18s; }
+        .bubbles li:nth-child(2) { left: 20%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 22s; }
+        .bubbles li:nth-child(3) { left: 35%; width: 35px; height: 35px; animation-delay: 4s; animation-duration: 20s; }
+        .bubbles li:nth-child(4) { left: 50%; width: 25px; height: 25px; animation-delay: 1s; animation-duration: 25s; }
+        .bubbles li:nth-child(5) { left: 65%; width: 28px; height: 28px; animation-delay: 3s; animation-duration: 19s; }
+        .bubbles li:nth-child(6) { left: 80%; width: 32px; height: 32px; animation-delay: 5s; animation-duration: 23s; }
+        .bubbles li:nth-child(7) { left: 15%; width: 24px; height: 24px; animation-delay: 7s; animation-duration: 21s; }
+        .bubbles li:nth-child(8) { left: 90%; width: 30px; height: 30px; animation-delay: 6s; animation-duration: 24s; }
 
-
-        /* Keyframes for floating bubbles and wind */
         @keyframes float-up {
             0% {
                 transform: translateY(0) translateX(0) scale(0);
@@ -477,19 +458,127 @@
             }
             10% {
                 opacity: 0.6;
-                transform: translateY(-10vh) translateX(20px) scale(1); /* Start rising and drifting right */
+                transform: translateY(-10vh) translateX(20px) scale(1);
             }
             50% {
                 opacity: 0.8;
-                transform: translateY(-50vh) translateX(-30px) scale(1); /* Middle rise, drifting left */
+                transform: translateY(-50vh) translateX(-30px) scale(1);
             }
             90% {
                 opacity: 0.4;
-                transform: translateY(-100vh) translateX(40px) scale(1.1); /* Near top, drifting right */
+                transform: translateY(-100vh) translateX(40px) scale(1.1);
             }
             100% {
                 transform: translateY(-110vh) translateX(50px) scale(0);
                 opacity: 0;
+            }
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+                /* Reset position for mobile */
+                position: static; 
+                transform: none;
+                margin-left: 0;
+            }
+            
+            /* Ensure the theme switch does not interfere with the hamburger/links wrapper on mobile */
+            .nav-container {
+                justify-content: space-between; /* Allow hamburger and theme-switch to space out */
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav a {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            /* RESET: Theme switch positioning for mobile */
+            .nav-container .theme-switch {
+                position: static;
+                transform: none;
+                margin-left: auto; /* Push it to the right if needed, or simply let it flow */
+            }
+            
+            /* When the menu is open, the theme switch should be at the bottom */
+            .nav-links.active .theme-switch {
+                margin-top: 1rem;
+                width: 90%;
+                text-align: center;
+                align-self: center;
+                display: flex; /* keep it flex for icon/text alignment */
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 3rem 0 2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+                letter-spacing: 1px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .cta-button {
+                font-size: 0.85rem;
+                padding: 0.9rem 1.5rem;
+            }
+
+            .grid-container {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .grid-container {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2.5rem;
+            }
+            
+            /* On large screens, hide the hamburger */
+            .hamburger {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .church-logo img {
+                max-width: 120px;
+            }
+
+            .service-time, .ministry-title {
+                font-size: 1.2rem;
+            }
+
+            .social-media a {
+                font-size: 28px;
+                margin: 0 10px;
             }
         }
     </style>
@@ -506,51 +595,37 @@
             <li></li>
             <li></li>
             <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
         </ul>
     </div>
     
     <div class="hero">
         <div class="container">
             <div class="church-logo">
-                <img src="images/Screenshot 2025-10-16 092315.png" alt="God's House Ministries Logo - Luxurious">
+                <img src="images/Screenshot 2025-10-16 092315.png" alt="God's House Ministries Logo">
             </div>
             <div class="tagline">A Sanctuary of Divine Light and Transformation</div>
             <div class="address">Located on Linda Road, Lusaka, Zambia</div>
-            <a href="#contact" class="cta-button">EXPERIENCE Gods prescence THIS SUNDAY</a>
+            <a href="#contact" class="cta-button">EXPERIENCE GOD'S PRESENCE THIS SUNDAY</a>
         </div>
     </div>
 
     <nav class="nav">
         <div class="nav-container">
-            <a href="#home">Home</a>
-            <a href="#about">About Us</a>
-            <a href="services.html">Services</a>
-            <a href="ministries.html">Ministries</a>
-            <a href="#women">Women's Ministry</a>
-            <a href="fathers.html">Father's Ministry</a>
-            <a href="children.html">Children's Ministry</a>
-            <a href="#teens">Teen Events</a>
-            <a href="#transformers">Transformers School</a>
-            <a href="#baptism">Baptism Classes</a>
-            <a href="#contact">Contact</a>
-            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#services">Services</a>
+                <a href="#ministries">Ministries</a>
+                <a href="#women">Women</a>
+                <a href="#fathers">Fathers</a>
+                <a href="#children">Children</a>
+                <a href="#contact">Contact</a>
+            </div>
             <button class="theme-switch" id="theme-toggle">
                 <i class="fas fa-sun" id="theme-icon"></i>
                 <span style="margin-left: 8px;">SUN RISE</span>
@@ -566,7 +641,7 @@
                     <p>We are a Bible-believing church dedicated to preaching the Good News of Jesus Christ and serving our community in Lusaka. We welcome everyone to join us in worship and fellowship in an environment of reverence and grace.</p>
                 </div>
                 <div style="text-align: center;">
-                    <img src="images/WhatsApp Image 2025-10-17 at 11.15.43_04ba926a.jpg" alt="Elegant Church Interior" style="max-width: 100%; border-radius: 5px; box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); border: 2px solid var(--gold-accent);">
+                    <img src="images/WhatsApp Image 2025-10-17 at 11.15.43_04ba926a.jpg" alt="Church Interior" style="max-width: 100%; border-radius: 5px; box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); border: 2px solid var(--gold-accent);">
                 </div>
             </div>
         </section>
@@ -575,7 +650,7 @@
             <div class="container">
                 <h2 class="section-title">Our Legacy and Mission</h2>
                 <div class="welcome-text">
-                    <p> THE YEAR OF DOING THE WORD FOR EXTRA ORDINARY RESULTS.</p>
+                    <p>THE YEAR OF DOING THE WORD FOR EXTRA ORDINARY RESULTS.</p>
                     <p>We believe in the power of prayer, the authority of Scripture, and the transformative work of the Holy Spirit in our lives.</p>
                 </div>
             </div>
@@ -615,22 +690,22 @@
 
         <section id="women" class="section">
             <div class="container">
-                <h2 class="section-title">Daughters of GODS HOUSE : Women's Ministry</h2>
+                <h2 class="section-title">Daughters of GOD'S HOUSE: Women's Ministry</h2>
                 <div class="grid-container">
                     <div class="ministry-card">
-                        <img src=" " alt="Women's Ministry">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Women+Ministry" alt="Women's Ministry">
                         <div class="ministry-title">Sisterhood Empowerment</div>
                         <p>Our women's ministry empowers ladies through prayer, Bible study, and community service.</p>
                         <p><strong>Meets:</strong> Every 2nd and 4th Saturday, 2:00 PM</p>
                     </div>
                     <div class="ministry-card">
-                        <img src="images/WhatsApp Image 2025-10-17 at 11.12.18_555fd1a8.jpg" alt="Women's Prayer Circle">
-                        <div class="ministry-title">PREACHINGS AND TEACHINGS </div>
-                        <p> OUR MASABGES TOUCHING MANY HEARTS AND LEADING THENM TO JESUS </p>
+                        <img src="images/WhatsApp Image 2025-10-17 at 11.12.18_555fd1a8.jpg" alt="Women's Prayer">
+                        <div class="ministry-title">Preachings and Teachings</div>
+                        <p>Our messages touching many hearts and leading them to Jesus.</p>
                         <p><strong>Meets:</strong> Every Tuesday, 4:00 PM</p>
                     </div>
                     <div class="ministry-card">
-                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=WOMEN+OUTREACH" alt="Women's Outreach">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Outreach" alt="Women's Outreach">
                         <div class="ministry-title">Community Service & Outreach</div>
                         <p>Reaching out to women in need throughout Lusaka with love and vital support.</p>
                         <p><strong>Meets:</strong> First Saturday of each month</p>
@@ -656,7 +731,7 @@
                         <p><strong>Meets:</strong> Every Thursday, 6:00 PM</p>
                     </div>
                     <div class="ministry-card">
-                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=FATHER+SON" alt="Father-Son Activities">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Father+Son" alt="Father-Son">
                         <div class="ministry-title">Father & Son Mentorship</div>
                         <p>Building strong, lasting bonds between fathers and sons through purposeful activities.</p>
                         <p><strong>Meets:</strong> Monthly activities</p>
@@ -670,19 +745,19 @@
                 <h2 class="section-title">Children's Ministry: Kingdom Kids</h2>
                 <div class="grid-container">
                     <div class="ministry-card">
-                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=CHILDREN+CLASS" alt="Children's Sunday School">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Sunday+School" alt="Sunday School">
                         <div class="ministry-title">Sunday School Academy</div>
                         <p>Fun, engaging, and age-appropriate lessons for children to learn about God's love.</p>
                         <p><strong>Time:</strong> During Sunday Worship Service</p>
                     </div>
                     <div class="ministry-card">
-                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=VBS+KIDS" alt="Vacation Bible School">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=VBS" alt="VBS">
                         <div class="ministry-title">Annual Bible Vacation School (VBS)</div>
                         <p>An annual, week-long event filled with games, crafts, and memorable Bible stories.</p>
                         <p><strong>Next Event:</strong> See Announcements</p>
                     </div>
                     <div class="ministry-card">
-                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=CHILDREN%27S+SERVICE" alt="Children's Outreach">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Service" alt="Junior Service">
                         <div class="ministry-title">Junior Service Projects</div>
                         <p>Teaching children the joy of serving and charity through local community projects.</p>
                         <p><strong>Meets:</strong> Quarterly</p>
@@ -695,22 +770,21 @@
             <div class="container" style="text-align: center;">
                 <h2 class="section-title">Connect With Us</h2>
                 <div class="contact-info">
-                    <p><strong>Physical Address:</strong> God's House Ministries, Linda Road, Lusaka, Zambia</p>
-                    <p><strong>Email Communications:</strong> <a href="mailto:info@godshouseministries.org">info@godshouseministries.org</a></p>
-                    <p><strong>Direct Line:</strong> <a href="tel:+"> (Use Placeholder)</a></p>
-                    <p><strong>Primary Service Times:</strong> Sunday 9:00 AM | Wednesday 5:30 PM | Friday 6:00 PM</p>
+                    <p><strong>Address:</strong> Linda Road, Lusaka, Zambia</p>
+                    <p><strong>Email:</strong> <a href="mailto:info@godshouseministries.org">info@godshouseministries.org</a></p>
+                    <p><strong>Service Times:</strong> Sunday 9:00 AM | Wednesday 5:30 PM | Friday 6:00 PM</p>
                 </div>
                 
                 <div class="map-container">
-                    <p>MAP LOCATION: Linda Road, Lusaka, Zambia - A Place of Grand Design</p>
+                    <p>MAP LOCATION: Linda Road, Lusaka, Zambia</p>
                 </div>
                 
                 <div class="social-media">
-                    <p>Follow Our Journey On Social Media</p>
+                    <p>Follow Our Journey</p>
                     <div>
-                        <a href="https://web.facebook.com/groups/294048191265990/?ref=share&mibextid=KtfwRi&_rdc=1&_rdr#"><i class="fab fa-facebook-f" aria-label="Facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram" aria-label="Instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube" aria-label="YouTube"></i></a>
+                        <a href="https://web.facebook.com/groups/294048191265990/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -718,7 +792,7 @@
     </div>
 
     <footer class="footer">
-        <p>&copy; 2025 GOD'S HOUSE MINISTRIES. All Rights Reserved. | A Ministry of Excellence</p>
+        <p>&copy; 2025 GOD'S HOUSE MINISTRIES. All Rights Reserved.</p>
         <p>Located in Linda Road, Lusaka, Zambia</p>
     </footer>
 
@@ -727,34 +801,47 @@
         const toggleButton = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const themeText = toggleButton.querySelector('span');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
 
-        // Function to set the theme
+        // Hamburger menu toggle
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Theme toggle function
         function setTheme(isDarkMode) {
             if (isDarkMode) {
                 body.classList.add('dark-mode');
-                themeIcon.className = 'fas fa-sun'; // Sun icon for switching to Light Mode
+                themeIcon.className = 'fas fa-sun';
                 themeText.textContent = 'SUN RISE';
                 localStorage.setItem('theme', 'dark');
             } else {
                 body.classList.remove('dark-mode');
-                themeIcon.className = 'fas fa-moon'; // Moon icon for switching to Dark Mode
+                themeIcon.className = 'fas fa-moon';
                 themeText.textContent = 'SUN SET';
                 localStorage.setItem('theme', 'light');
             }
         }
 
-        // 1. Check local storage for saved preference
+        // Load saved theme
         const savedTheme = localStorage.getItem('theme');
-        
-        // 2. Apply saved theme or default to 'dark-mode' (luxurious theme)
         if (savedTheme === 'light') {
-            setTheme(false); // Apply Light Mode
+            setTheme(false);
         } else {
-            // Default to dark mode if no preference saved or if 'dark' is saved
-            setTheme(true); 
+            setTheme(true);
         }
 
-        // 3. Add event listener to the toggle button
+        // Theme toggle button
         toggleButton.addEventListener('click', () => {
             const isCurrentlyDark = body.classList.contains('dark-mode');
             setTheme(!isCurrentlyDark);
