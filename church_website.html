@@ -31,12 +31,11 @@
             --gold-accent: #b8860b; 
             --gold-gradient: linear-gradient(90deg, #b8860b, #daa520);
             --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            --line-color: rgba(0, 0, 0, 0.15); /* Used for bubbles in Light Mode */
+            --line-color: rgba(0, 0, 0, 0.15);
         }
 
         /* CSS VARIABLES (DARK MODE - LUXURY Theme / SUN SET) */
         body.dark-mode {
-            /* LUXURY DARK MODE */
             --bg-body-gradient: linear-gradient(135deg, #0f0f0f 0%, #1e1e1e 100%); 
             --bg-primary: #1a1a1a; 
             --bg-secondary: #2c2c2c; 
@@ -48,7 +47,12 @@
             --gold-accent: #FFD700; 
             --gold-gradient: linear-gradient(90deg, #ffd700, #b8860b);
             --header-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
-            --line-color: rgba(255, 215, 0, 0.1); /* Used for bubbles in Dark Mode (subtle gold) */
+            --line-color: rgba(255, 215, 0, 0.1);
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
         }
 
         body {
@@ -58,7 +62,9 @@
             line-height: 1.7;
             overflow-x: hidden;
             transition: background 0.5s ease, color 0.5s ease;
-            position: relative; 
+            position: relative;
+            width: 100%;
+            max-width: 100vw;
         }
 
         .container {
@@ -130,7 +136,7 @@
         }
         
         /* ------------------------------------------- */
-        /* HERO SECTION (Dramatic Look) */
+        /* HERO SECTION */
         /* ------------------------------------------- */
         .hero {
             padding: 10rem 0 6rem; 
@@ -144,7 +150,7 @@
                     rgba(30, 30, 30, 0.6) 50%, 
                     rgba(0, 0, 0, 0.9) 100% 
                 ), 
-                url('https://via.placeholder.com/1600x500/2c2c2c/FFD700?text=Grand+Church+Facade+with+Spotlights') no-repeat center center;
+                url('https://via.placeholder.com/1600x500/2c2c2c/FFD700?text=Grand+Church+Facade') no-repeat center center;
             background-size: cover;
             z-index: 10; 
         }
@@ -218,7 +224,6 @@
             transition: color 0.5s ease; 
         }
         
-        /* SUN RISE EFFECT ON SECTION TITLE */
         body:not(.dark-mode) #home .section-title {
             animation: sun-rise-glow 3s ease-out forwards; 
         }
@@ -227,7 +232,6 @@
             color: var(--text-primary); 
         }
         
-        /* Sun Rise Glow Keyframes */
         @keyframes sun-rise-glow {
             0% { 
                 color: var(--text-secondary); 
@@ -283,7 +287,6 @@
             border-color: var(--gold-accent); 
         }
         
-        /* Style for all static card images in service and ministry sections */
         .card-img {
             max-width: 100%;
             height: 180px; 
@@ -315,11 +318,11 @@
         /* SLIDER CSS */
         .slider-container {
             width: 100%;
-            height: 180px; /* Same height as ministry-card img */
+            height: 180px;
             position: relative;
             margin-bottom: 15px;
             border-radius: 2px;
-            overflow: hidden; /* Hide overflowing images */
+            overflow: hidden;
             border: 1px solid var(--gold-accent); 
         }
 
@@ -331,7 +334,7 @@
             top: 0;
             left: 0;
             opacity: 0;
-            transition: opacity 1s ease-in-out; /* Smooth fade effect */
+            transition: opacity 1s ease-in-out;
         }
 
         .slider-img.active {
@@ -339,7 +342,7 @@
         }
         
         /* ------------------------------------------- */
-        /* FOOTER & CONTACT STYLES (Unchanged) */
+        /* FOOTER & CONTACT STYLES */
         /* ------------------------------------------- */
         .contact-info p {
             font-size: 1.2rem;
@@ -413,35 +416,83 @@
             margin: 0.5rem 0;
         }
         
-        /* Responsive Adjustments (Unchanged) */
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
             .hero {
                 padding: 6rem 0 4rem;
             }
             .tagline {
                 font-size: 1.5rem;
+                letter-spacing: 1px;
             }
             .section-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
+            }
+            .nav {
+                padding: 0.5rem 0;
             }
             .nav-container {
                 flex-direction: column;
+                padding: 0 0.5rem;
+                gap: 0.3rem;
             }
             .nav a {
-                margin: 0.5rem 0;
+                margin: 0.3rem 0;
+                padding: 0.4rem 0.5rem;
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+                width: 100%;
+                text-align: center;
             }
             .grid-container {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
             .theme-switch {
-                margin: 10px 0 0 0;
+                margin: 0.5rem 0 0 0;
+                width: 100%;
+                justify-content: center;
+                padding: 0.6rem 1rem;
+            }
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 0.9rem;
+                width: 90%;
+                text-align: center;
+            }
+            .church-logo img {
+                max-width: 180px;
+            }
+            .service-time, .ministry-title {
+                font-size: 1.5rem;
+            }
+            .social-media a {
+                font-size: 28px;
+                margin: 0 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav a {
+                font-size: 0.65rem;
+                padding: 0.3rem 0.3rem;
+                letter-spacing: 0.5px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .tagline {
+                font-size: 1.2rem;
             }
         }
 
         /* ------------------------------------------- */
         /* FLOATING BUBBLE ANIMATION STYLES */
         /* ------------------------------------------- */
-
         .bubbles-container {
             position: fixed;
             top: 0;
@@ -459,16 +510,14 @@
             list-style: none;
             width: 20px;
             height: 20px;
-            /* Use radial gradient for a translucent, 3D bubble effect */
             background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), var(--line-color));
             border-radius: 50%;
-            bottom: -150px; /* Start far below the viewport */
+            bottom: -150px;
             opacity: 0;
             animation: float-up 15s linear infinite;
             box-shadow: 0 0 10px var(--line-color);
         }
 
-        /* Staggered animation delays and sizes for the bubbles (25 items) */
         .bubbles li:nth-child(1) { left: 5%; width: 40px; height: 40px; animation-delay: 0s; animation-duration: 18s; }
         .bubbles li:nth-child(2) { left: 15%; width: 25px; height: 25px; animation-delay: 2s; animation-duration: 22s; }
         .bubbles li:nth-child(3) { left: 25%; width: 50px; height: 50px; animation-delay: 4s; animation-duration: 20s; }
@@ -495,8 +544,6 @@
         .bubbles li:nth-child(24) { left: 68%; width: 27px; height: 27px; animation-delay: 1s; animation-duration: 24s; }
         .bubbles li:nth-child(25) { left: 88%; width: 43px; height: 43px; animation-delay: 7s; animation-duration: 19s; }
 
-
-        /* Keyframes for floating bubbles and wind */
         @keyframes float-up {
             0% {
                 transform: translateY(0) translateX(0) scale(0);
@@ -504,15 +551,15 @@
             }
             10% {
                 opacity: 0.6;
-                transform: translateY(-10vh) translateX(20px) scale(1); /* Start rising and drifting right */
+                transform: translateY(-10vh) translateX(20px) scale(1);
             }
             50% {
                 opacity: 0.8;
-                transform: translateY(-50vh) translateX(-30px) scale(1); /* Middle rise, drifting left */
+                transform: translateY(-50vh) translateX(-30px) scale(1);
             }
             90% {
                 opacity: 0.4;
-                transform: translateY(-100vh) translateX(40px) scale(1.1); /* Near top, drifting right */
+                transform: translateY(-100vh) translateX(40px) scale(1.1);
             }
             100% {
                 transform: translateY(-110vh) translateX(50px) scale(0);
@@ -556,7 +603,7 @@
     <div class="hero">
         <div class="container">
             <div class="church-logo">
-                <img src="images/Screenshot 2025-10-16 092315.png" alt="God's House Ministries Logo - Luxurious">
+                <img src="https://via.placeholder.com/250x250/2c2c2c/FFD700?text=Church+Logo" alt="God's House Ministries Logo">
             </div>
             <div class="tagline">A Sanctuary of Divine Light and Transformation</div>
             <div class="address">Located on Linda Road, Lusaka, Zambia</div>
@@ -568,14 +615,11 @@
         <div class="nav-container">
             <a href="#home">Home</a>
             <a href="#about">About Us</a>
-            <a href="services.html">Services</a>
-            <a href="ministries.html">Ministries</a>
+            <a href="#services">Services</a>
+            <a href="#ministries">Ministries</a>
             <a href="#women">Women's Ministry</a>
-            <a href="fathers.html">Father's Ministry</a>
-            <a href="children.html">Children's Ministry</a>
-            <a href="#teens">Teen Events</a>
-            <a href="#transformers">Transformers School</a>
-            <a href="#baptism">Baptism Classes</a>
+            <a href="#fathers">Father's Ministry</a>
+            <a href="#children">Children's Ministry</a>
             <a href="#contact">Contact</a>
             
             <button class="theme-switch" id="theme-toggle">
@@ -593,7 +637,7 @@
                     <p>We are a Bible-believing church dedicated to preaching the Good News of Jesus Christ and serving our community in Lusaka. We welcome everyone to join us in worship and fellowship in an environment of reverence and grace.</p>
                 </div>
                 <div style="text-align: center;">
-                    <img src="images/WhatsApp Image 2025-10-17 at 11.15.43_04ba926a.jpg" alt="Elegant Church Interior" style="max-width: 100%; border-radius: 5px; box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); border: 2px solid var(--gold-accent);">
+                    <img src="https://via.placeholder.com/800x500/2c2c2c/FFD700?text=Church+Interior" alt="Elegant Church Interior" style="max-width: 100%; border-radius: 5px; box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); border: 2px solid var(--gold-accent);">
                 </div>
             </div>
         </section>
@@ -602,7 +646,7 @@
             <div class="container">
                 <h2 class="section-title">Our Legacy and Mission</h2>
                 <div class="welcome-text">
-                    <p> THE YEAR OF DOING THE WORD FOR EXTRA ORDINARY RESULTS.</p>
+                    <p>THE YEAR OF DOING THE WORD FOR EXTRA ORDINARY RESULTS.</p>
                     <p>We believe in the power of prayer, the authority of Scripture, and the transformative work of the Holy Spirit in our lives.</p>
                 </div>
             </div>
@@ -613,19 +657,19 @@
                 <h2 class="section-title">Schedule of Divine Services</h2>
                 <div class="grid-container">
                     <div class="service-card">
-                        <img src="images/WhatsApp Image 2025-10-17 at 11.15.43_04ba926a.jpg" alt="Sunday Worship Service" class="card-img">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Sunday+Service" alt="Sunday Worship Service" class="card-img">
                         <div class="service-time">Sunday Worship Service</div>
                         <p>9:00 AM - 11:30 AM</p>
                         <p>Join us for praise and worship, prayer, and the powerful Word of God.</p>
                     </div>
                     <div class="service-card">
-                        <img src="images/IMG_5465.JPG" alt="Wednesday Bible Study" class="card-img">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Bible+Study" alt="Wednesday Bible Study" class="card-img">
                         <div class="service-time">Wednesday Bible Study</div>
                         <p>5:30 PM - 7:00 PM</p>
                         <p>Dive deeper into God's Word with our interactive, in-depth study sessions.</p>
                     </div>
                     <div class="service-card">
-                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=INTERCESSORY+NIGHT" alt="Friday Intercessory Night" class="card-img">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Prayer+Night" alt="Friday Intercessory Night" class="card-img">
                         <div class="service-time">Friday Intercessory Night</div>
                         <p>6:00 PM - 8:00 PM</p>
                         <p>A dedicated time for corporate prayer for our families, community, and the nations.</p>
@@ -648,19 +692,7 @@
                 <h2 class="section-title">Daughters of GODS HOUSE : Women's Ministry</h2>
                 <div class="grid-container">
                     <div class="ministry-card">
-                        <img src=" " alt="Women's Ministry" class="card-img">
-                        <div class="ministry-title">Sisterhood Empowerment</div>
-                        <p>Our women's ministry empowers ladies through prayer, Bible study, and community service.</p>
-                        <p><strong>Meets:</strong> Every 2nd and 4th Saturday, 2:00 PM</p>
-                    </div>
-                    <div class="ministry-card">
-                        <img src="images/WhatsApp Image 2025-10-17 at 11.12.18_555fd1a8.jpg" alt="Women's Prayer Circle" class="card-img">
-                        <div class="ministry-title">PREACHINGS AND TEACHINGS </div>
-                        <p> OUR MASABGES TOUCHING MANY HEARTS AND LEADING THENM TO JESUS </p>
-                        <p><strong>Meets:</strong> Every Tuesday, 4:00 PM</p>
-                    </div>
-                    <div class="ministry-card">
-                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=WOMEN+OUTREACH" alt="Women's Outreach" class="card-img">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Women+Outreach" alt="Women's Outreach" class="card-img">
                         <div class="ministry-title">Community Service & Outreach</div>
                         <p>Reaching out to women in need throughout Lusaka with love and vital support.</p>
                         <p><strong>Meets:</strong> First Saturday of each month</p>
@@ -674,7 +706,7 @@
                 <h2 class="section-title">Men of Valor: Father's Ministry</h2>
                 <div class="grid-container">
                     <div class="ministry-card">
-                        <img src="images/WhatsApp Image 2025-10-17 at 11.22.14_6e641044.jpg" alt="Men of Valor" class="card-img">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Men+Leadership" alt="Men of Valor" class="card-img">
                         <div class="ministry-title">Leadership Development</div>
                         <p>Equipping men to be godly, responsible leaders in their homes, church, and community.</p>
                         <p><strong>Meets:</strong> Every 1st and 3rd Saturday, 7:00 AM</p>
@@ -682,24 +714,24 @@
                     
                     <div class="ministry-card" id="youth-slider-card">
                         <div class="slider-container">
-                            <img src="images/IMG-20251017-WA0026.jpg" alt="Youth Ministry Image 1" class="slider-img active">
-                            <img src="images/IMG-20251017-WA0004.jpg" alt="Youth Ministry Image 2" class="slider-img">
-                            <img src="images/IMG-20251017-WA0027.jpg" alt="Youth Ministry Image 3" class="slider-img">
-                            <img src="images/IMG-20251017-WA0023.jpg" alt="Youth Ministry Image 4" class="slider-img">
+                            <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Youth+1" alt="Youth Ministry Image 1" class="slider-img active">
+                            <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Youth+2" alt="Youth Ministry Image 2" class="slider-img">
+                            <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Youth+3" alt="Youth Ministry Image 3" class="slider-img">
+                            <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Youth+4" alt="Youth Ministry Image 4" class="slider-img">
                         </div>
-                        <div class="ministry-title">GODS HOUSE YOUTHS </div>
+                        <div class="ministry-title">GODS HOUSE YOUTHS</div>
                         <p>YOUTHS FULL OF ENERGY AND IMPACTED BY THE HOLYSPIRIT.</p>
                         <p><strong>Meets:</strong> Quarterly</p>
                     </div>
 
                     <div class="ministry-card">
-                        <img src="images/IMG_5465.JPG" alt="Men's Bible Study" class="card-img">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Men+Bible+Study" alt="Men's Bible Study" class="card-img">
                         <div class="ministry-title">Iron Sharpens Iron Study</div>
                         <p>In-depth study of God's Word focusing on topics relevant to men's spiritual journey.</p>
                         <p><strong>Meets:</strong> Every Thursday, 6:00 PM</p>
                     </div>
                     <div class="ministry-card">
-                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=FATHER+SON" alt="Father-Son Activities" class="card-img">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Father+Son" alt="Father-Son Activities" class="card-img">
                         <div class="ministry-title">Father & Son Mentorship</div>
                         <p>Building strong, lasting bonds between fathers and sons through purposeful activities.</p>
                         <p><strong>Meets:</strong> Monthly activities</p>
@@ -713,19 +745,19 @@
                 <h2 class="section-title">Children's Ministry: Kingdom Kids</h2>
                 <div class="grid-container">
                     <div class="ministry-card">
-                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=CHILDREN+CLASS" alt="Children's Sunday School" class="card-img">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Sunday+School" alt="Children's Sunday School" class="card-img">
                         <div class="ministry-title">Sunday School Academy</div>
                         <p>Fun, engaging, and age-appropriate lessons for children to learn about God's love.</p>
                         <p><strong>Time:</strong> During Sunday Worship Service</p>
                     </div>
                     <div class="ministry-card">
-                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=VBS+KIDS" alt="Vacation Bible School" class="card-img">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=VBS" alt="Vacation Bible School" class="card-img">
                         <div class="ministry-title">Annual Bible Vacation School (VBS)</div>
                         <p>An annual, week-long event filled with games, crafts, and memorable Bible stories.</p>
                         <p><strong>Next Event:</strong> See Announcements</p>
                     </div>
                     <div class="ministry-card">
-                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=CHILDREN%27S+SERVICE" alt="Children's Outreach" class="card-img">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Children+Service" alt="Children's Outreach" class="card-img">
                         <div class="ministry-title">Junior Service Projects</div>
                         <p>Teaching children the joy of serving and charity through local community projects.</p>
                         <p><strong>Meets:</strong> Quarterly</p>
@@ -740,20 +772,20 @@
                 <div class="contact-info">
                     <p><strong>Physical Address:</strong> God's House Ministries, Linda Road, Lusaka, Zambia</p>
                     <p><strong>Email Communications:</strong> <a href="mailto:info@godshouseministries.org">info@godshouseministries.org</a></p>
-                    <p><strong>Direct Line:</strong> <a href="tel:+"> (Use Placeholder)</a></p>
+                    <p><strong>Direct Line:</strong> <a href="tel:+260123456789">+260 123 456 789</a></p>
                     <p><strong>Primary Service Times:</strong> Sunday 9:00 AM | Wednesday 5:30 PM | Friday 6:00 PM</p>
                 </div>
                 
                 <div class="map-container">
-                    <img src="images/WhatsApp Image 2025-10-17 at 11.15.43_3fc36d0b.jpg" 
-                         alt="Map or Image of Church Location" 
+                    <img src="https://via.placeholder.com/1200x350/2c2c2c/FFD700?text=Church+Location+Map" 
+                         alt="Map of Church Location" 
                          style="width: 100%; height: 100%; object-fit: cover; border-radius: 5px;">
                 </div>
                 
                 <div class="social-media">
                     <p>Follow Our Journey On Social Media</p>
                     <div>
-                        <a href="https://web.facebook.com/groups/294048191265990/?ref=share&mibextid=KtfwRi&_rdc=1&_rdr#"><i class="fab fa-facebook-f" aria-label="Facebook"></i></a>
+                        <a href="https://web.facebook.com/groups/294048191265990/" target="_blank"><i class="fab fa-facebook-f" aria-label="Facebook"></i></a>
                         <a href="#"><i class="fab fa-instagram" aria-label="Instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube" aria-label="YouTube"></i></a>
                     </div>
@@ -777,64 +809,66 @@
         function setTheme(isDarkMode) {
             if (isDarkMode) {
                 body.classList.add('dark-mode');
-                themeIcon.className = 'fas fa-sun'; // Sun icon for switching to Light Mode
+                themeIcon.className = 'fas fa-sun';
                 themeText.textContent = 'SUN RISE';
                 localStorage.setItem('theme', 'dark');
             } else {
                 body.classList.remove('dark-mode');
-                themeIcon.className = 'fas fa-moon'; // Moon icon for switching to Dark Mode
+                themeIcon.className = 'fas fa-moon';
                 themeText.textContent = 'SUN SET';
                 localStorage.setItem('theme', 'light');
             }
         }
 
-        // 1. Check local storage for saved preference
+        // Check local storage for saved preference
         const savedTheme = localStorage.getItem('theme');
         
-        // 2. Apply saved theme or default to 'dark-mode' (luxurious theme)
+        // Apply saved theme or default to dark mode
         if (savedTheme === 'light') {
-            setTheme(false); // Apply Light Mode
+            setTheme(false);
         } else {
-            // Default to dark mode if no preference saved or if 'dark' is saved
             setTheme(true); 
         }
 
-        // 3. Add event listener to the toggle button
+        // Add event listener to the toggle button
         toggleButton.addEventListener('click', () => {
             const isCurrentlyDark = body.classList.contains('dark-mode');
             setTheme(!isCurrentlyDark);
         });
 
-        // ===================================================
-        // NEW: Image Slider Logic for GODS HOUSE YOUTHS
-        // ===================================================
+        // Image Slider Logic for Youth Ministry
         function initializeSlider(cardId) {
             const card = document.getElementById(cardId);
             if (!card) return;
             
-            // Select all slider images within the card
             const images = card.querySelectorAll('.slider-img');
             let currentImageIndex = 0;
             
             function changeImage() {
-                // Remove 'active' class from current image to fade it out
                 images[currentImageIndex].classList.remove('active');
-                
-                // Calculate next image index (loop back to 0 if at the end)
                 currentImageIndex = (currentImageIndex + 1) % images.length;
-                
-                // Add 'active' class to next image to fade it in
                 images[currentImageIndex].classList.add('active');
             }
 
-            // Set interval to change image every 3 seconds (3000ms)
             setInterval(changeImage, 3000); 
         }
 
-        // Call the function for the youth ministry card when the DOM is ready
+        // Initialize slider when DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
             initializeSlider('youth-slider-card');
         });
     </script>
 </body>
-</html>
+</html>/300x200/2c2c2c/FFD700?text=Women+Empowerment" alt="Women's Ministry" class="card-img">
+                        <div class="ministry-title">Sisterhood Empowerment</div>
+                        <p>Our women's ministry empowers ladies through prayer, Bible study, and community service.</p>
+                        <p><strong>Meets:</strong> Every 2nd and 4th Saturday, 2:00 PM</p>
+                    </div>
+                    <div class="ministry-card">
+                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=Women+Prayer" alt="Women's Prayer Circle" class="card-img">
+                        <div class="ministry-title">PREACHINGS AND TEACHINGS</div>
+                        <p>OUR MESSAGES TOUCHING MANY HEARTS AND LEADING THEM TO JESUS</p>
+                        <p><strong>Meets:</strong> Every Tuesday, 4:00 PM</p>
+                    </div>
+                    <div class="ministry-card">
+                        <img src="https://via.placeholder.com
