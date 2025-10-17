@@ -301,26 +301,18 @@
             box-shadow: 0 10px 25px var(--shadow-color); 
             border-color: var(--gold-accent); 
         }
-        
-        .ministry-card img {
+
+        /* --- FIX: Styles for regular ministry images (direct children of ministry-card) --- */
+        .ministry-card > img {
             max-width: 100%;
             height: 180px; 
             object-fit: cover;
             border-radius: 2px;
             margin-bottom: 15px;
             border: 1px solid var(--gold-accent); 
-            /* Slider images will be positioned absolutely in the container */
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
         }
         
-        .ministry-card img.active {
-            opacity: 1;
-        }
-
+        /* FIX: Styles for the slider container to establish positioning context */
         .slider-container {
             position: relative; /* Establish context for absolute positioning */
             width: 100%;
@@ -329,6 +321,26 @@
             overflow: hidden; /* Hide images outside the container */
             border-radius: 2px;
             border: 1px solid var(--gold-accent);
+        }
+
+        /* FIX: Styles for images inside the slider (GOD'S HOUSE YOUTHS) to ensure fit and animation */
+        .slider-container .slider-img {
+            max-width: 100%;
+            width: 100%; /* Ensure it takes full width of container */
+            height: 180px; 
+            object-fit: cover; /* Ensures images fit the aligned size without distortion */
+            border-radius: 2px;
+            border: 1px solid var(--gold-accent); 
+            
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .slider-container .slider-img.active {
+            opacity: 1;
         }
         
         .service-time, .ministry-title {
@@ -384,6 +396,15 @@
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
             padding: 1rem;
             text-align: center;
+            overflow: hidden; /* Added to contain the map image */
+        }
+
+        /* Style for the map image to cover the container */
+        .map-container img {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            border-radius: 5px;
         }
 
         .social-media {
@@ -539,7 +560,7 @@
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                 gap: 2.5rem;
             }
-            /* --- CENTERING THE MENU ON DESKTOP --- */
+            /* CENTERING THE MENU ON DESKTOP */
             .nav-container {
                 justify-content: center;
             }
@@ -750,7 +771,7 @@
                         <p><strong>Time:</strong> During Sunday Worship Service</p>
                     </div>
                     <div class="ministry-card">
-                        <img src="https://via.placeholder.com/300x200/2c2c2c/FFD700?text=VBS" alt="VBS">
+                        <img src="images/WhatsApp Image 2025-10-17 at 11.15.43_33ffd20c.jpg" alt="VBS">
                         <div class="ministry-title">Annual Bible Vacation School (VBS)</div>
                         <p>An annual, week-long event filled with games, crafts, and memorable Bible stories.</p>
                         <p><strong>Next Event:</strong> See Announcements</p>
@@ -775,7 +796,8 @@
                 </div>
                 
                 <div class="map-container">
-                    <p>MAP LOCATION: Linda Road, Lusaka, Zambia</p>
+                    <img src="images/WhatsApp Image 2025-10-17 at 11.15.43_3fc36d0b.jpg" 
+                         alt="Map or Image of Church Location">
                 </div>
                 
                 <div class="social-media">
@@ -873,7 +895,7 @@
             });
         });
         
-        // --- Youth Ministry Image Slider Logic ---
+        // --- Youth Ministry Image Slider Logic (Re-added) ---
         function startYouthSlider() {
             const sliderContainer = document.querySelector('#youth-slider-card .slider-container');
             if (!sliderContainer) return;
