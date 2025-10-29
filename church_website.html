@@ -210,7 +210,7 @@
             font-weight: 700; 
             text-decoration: none;
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-            margin: 0 1rem;
+            margin: 0.5rem;
         }
 
         .cta-button:hover {
@@ -276,6 +276,14 @@
             margin: 0 auto 2rem;
             padding: 0 1rem;
         }
+
+        .welcome-text img {
+            max-width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            border: 2px solid var(--gold-accent);
+            margin: 1rem 0;
+        }
         
         .grid-container {
             display: grid;
@@ -301,15 +309,32 @@
             box-shadow: 0 10px 25px var(--shadow-color); 
             border-color: var(--gold-accent); 
         }
-        
-        .ministry-card img {
+
+        .ministry-card > img {
             max-width: 100%;
             height: 180px; 
             object-fit: cover;
             border-radius: 2px;
             margin-bottom: 15px;
             border: 1px solid var(--gold-accent); 
-            /* Slider images will be positioned absolutely in the container */
+        }
+        
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border-radius: 2px;
+            border: 1px solid var(--gold-accent);
+        }
+
+        .slider-container .slider-img {
+            max-width: 100%;
+            width: 100%;
+            height: 180px; 
+            object-fit: cover;
+            border-radius: 2px;
             position: absolute;
             top: 0;
             left: 0;
@@ -317,109 +342,54 @@
             transition: opacity 1s ease-in-out;
         }
         
-        .ministry-card img.active {
+        .slider-container .slider-img.active {
             opacity: 1;
         }
-
-        .slider-container {
-            position: relative; /* Establish context for absolute positioning */
-            width: 100%;
-            height: 180px; /* Match image height */
-            margin-bottom: 15px;
-            overflow: hidden; /* Hide images outside the container */
-            border-radius: 2px;
-            border: 1px solid var(--gold-accent);
-        }
-
+        
         .service-time, .ministry-title {
             font-family: 'Playfair Display', serif;
-            font-weight: 600;
+            font-weight: 600; 
             color: var(--gold-accent);
             margin-bottom: 0.5rem;
-            font-size: 1.4rem;
-            text-shadow: 0 0 3px rgba(255, 215, 0, 0.5);
+            font-size: 1.4rem; 
+            text-shadow: 0 0 3px rgba(255, 215, 0, 0.5); 
         }
 
         .ministry-card p, .service-card p {
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 1rem; 
             flex-grow: 1;
         }
 
         .ministry-card strong {
             color: var(--gold-accent);
         }
+
+        .announcements-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .announcements-list li {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px var(--shadow-color);
+        }
+
+        .announcements-list h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .announcements-list ul ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
         
-        /* Media Queries for Responsiveness */
-        @media (min-width: 600px) {
-            .grid-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 900px) {
-            .grid-container {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .nav-container {
-                padding: 0 2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                background: var(--bg-secondary);
-                padding: 1rem 0;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav a {
-                padding: 0.5rem 0;
-                width: 100%;
-            }
-            .hamburger {
-                display: flex;
-                position: absolute;
-                right: 1rem;
-                top: 0.75rem; 
-            }
-            .theme-switch {
-                margin: 1rem auto 0;
-            }
-            .hero {
-                padding: 2rem 0; 
-            }
-            .section {
-                padding: 2rem 0;
-            }
-        }
-
-        /* Bubbles animation for background ambience */
-        @keyframes float-up {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-                border-radius: 0;
-            }
-            50% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-1000px) rotate(720deg);
-                opacity: 0;
-                border-radius: 50%;
-            }
-        }
-
         .contact-info p {
             font-size: 1rem;
             color: var(--text-secondary);
@@ -442,20 +412,28 @@
 
         .map-container {
             width: 100%;
-            height: 250px;
-            background-color: #000000;
+            height: 250px; 
+            background-color: #000000; 
             margin: 2rem 0;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 5px;
-            border: 2px solid var(--gold-accent);
+            border: 2px solid var(--gold-accent); 
             color: var(--text-secondary);
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
             padding: 1rem;
             text-align: center;
+            overflow: hidden;
         }
-        
+
+        .map-container img {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            border-radius: 5px;
+        }
+
         .social-media {
             margin-top: 2rem;
             text-align: center;
@@ -471,7 +449,7 @@
         .social-media a {
             display: inline-block;
             margin: 0 15px;
-            font-size: 32px;
+            font-size: 32px; 
             color: var(--text-primary);
             transition: color 0.3s ease, transform 0.3s ease;
         }
@@ -487,7 +465,7 @@
             color: var(--text-secondary);
             padding: 2rem 1rem;
             text-align: center;
-            border-top: 1px solid var(--gold-accent);
+            border-top: 1px solid var(--gold-accent); 
             z-index: 10;
             position: relative;
         }
@@ -496,7 +474,7 @@
             margin: 0.5rem 0;
             font-size: 0.9rem;
         }
-
+        
         .bubbles-container {
             position: fixed;
             top: 0;
@@ -504,8 +482,8 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 1;
-            pointer-events: none;
+            z-index: 1; 
+            pointer-events: none; 
         }
 
         .bubbles li {
@@ -522,66 +500,131 @@
             box-shadow: 0 0 10px var(--line-color);
         }
 
-        .bubbles li:nth-child(1) {
-            left: 5%;
-            width: 30px;
-            height: 30px;
-            animation-delay: 0s;
-            animation-duration: 18s;
+        .bubbles li:nth-child(1) { left: 5%; width: 30px; height: 30px; animation-delay: 0s; animation-duration: 18s; }
+        .bubbles li:nth-child(2) { left: 20%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 22s; }
+        .bubbles li:nth-child(3) { left: 35%; width: 35px; height: 35px; animation-delay: 4s; animation-duration: 20s; }
+        .bubbles li:nth-child(4) { left: 50%; width: 25px; height: 25px; animation-delay: 1s; animation-duration: 25s; }
+        .bubbles li:nth-child(5) { left: 65%; width: 28px; height: 28px; animation-delay: 3s; animation-duration: 19s; }
+        .bubbles li:nth-child(6) { left: 80%; width: 32px; height: 32px; animation-delay: 5s; animation-duration: 23s; }
+        .bubbles li:nth-child(7) { left: 15%; width: 24px; height: 24px; animation-delay: 7s; animation-duration: 21s; }
+        .bubbles li:nth-child(8) { left: 90%; width: 30px; height: 30px; animation-delay: 6s; animation-duration: 24s; }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(0) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+                transform: translateY(-10vh) translateX(20px) scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-50vh) translateX(-30px) scale(1);
+            }
+            90% {
+                opacity: 0.4;
+                transform: translateY(-100vh) translateX(40px) scale(1.1);
+            }
+            100% {
+                transform: translateY(-110vh) translateX(50px) scale(0);
+                opacity: 0;
+            }
         }
 
-        .bubbles li:nth-child(2) {
-            left: 20%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 2s;
-            animation-duration: 22s;
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav a {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .theme-switch {
+                margin-top: 1rem;
+            }
+
+            .hero {
+                padding: 3rem 0 2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+                letter-spacing: 1px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .cta-button {
+                font-size: 0.85rem;
+                padding: 0.9rem 1.5rem;
+            }
+
+            .grid-container {
+                gap: 1.5rem;
+            }
         }
 
-        .bubbles li:nth-child(3) {
-            left: 35%;
-            width: 35px;
-            height: 35px;
-            animation-delay: 4s;
-            animation-duration: 20s;
+        @media (min-width: 600px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        .bubbles li:nth-child(4) {
-            left: 50%;
-            width: 45px;
-            height: 45px;
-            animation-delay: 0s;
-            animation-duration: 15s;
+        @media (min-width: 900px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .nav-container {
+                padding: 0 2rem;
+            }
         }
 
-        .bubbles li:nth-child(5) {
-            left: 65%;
-            width: 25px;
-            height: 25px;
-            animation-delay: 5s;
-            animation-duration: 16s;
-        }
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.4rem;
+            }
 
-        .bubbles li:nth-child(6) {
-            left: 80%;
-            width: 50px;
-            height: 50px;
-            animation-delay: 1s;
-            animation-duration: 25s;
-        }
+            .tagline {
+                font-size: 1rem;
+            }
 
-        .bubbles li:nth-child(7) {
-            left: 95%;
-            width: 30px;
-            height: 30px;
-            animation-delay: 8s;
-            animation-duration: 19s;
+            .church-logo img {
+                max-width: 120px;
+            }
+
+            .service-time, .ministry-title {
+                font-size: 1.2rem;
+            }
+
+            .social-media a {
+                font-size: 28px;
+                margin: 0 10px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="bubbles-container">
         <ul class="bubbles">
+            <li></li>
             <li></li>
             <li></li>
             <li></li>
@@ -616,13 +659,13 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="church-logo">
-                <img src="https://via.placeholder.com/150/FFD700/000000?text=GHM" alt="GOD'S HOUSE MINISTRIES Logo">
+                <img src="images/Screenshot 2025-10-16 092315.png" alt="GOD'S HOUSE MINISTRIES Logo">
             </div>
             <h1 class="tagline">
                 GOD'S HOUSE MINISTRIES
             </h1>
             <p class="address">
-                MAKING THE UNCOMMON LOVE OF GOD COMMMON IN THE SEASON OF DOING THE WORD FOR EXTRA ORDINARY RESULTS
+                MAKING THE UNCOMMON LOVE OF GOD COMMON IN THE SEASON OF DOING THE WORD FOR EXTRAORDINARY RESULTS
             </p>
             <div>
                 <a href="#services" class="cta-button">Join Our Service</a>
@@ -634,9 +677,10 @@
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">Welcome to God's House</h2>
-            <p class="welcome-text">
-                We are a vibrant, faith-filled community in Lusaka, Zambia, dedicated to sharing the uncommon love of God. We believe in the transforming power of the Word and are committed to helping you experience extraordinary results in every area of your life. Come and grow with us!
-            </p>
+            <div class="welcome-text">
+                <img src="images/WhatsApp Image 2025-10-17 at 11.15.43_04ba926a.jpg" alt="GOD'S HOUSE MINISTRIES">
+                <p>We are a vibrant, faith-filled community in Lusaka, Zambia, dedicated to sharing the uncommon love of God. We believe in the transforming power of the Word and are committed to helping you experience extraordinary results in every area of your life. Come and grow with us!</p>
+            </div>
             <div class="grid-container">
                 <div class="ministry-card">
                     <div style="font-size: 3rem; color: var(--gold-accent); margin-bottom: 1rem;"><i class="fas fa-cross"></i></div>
@@ -664,9 +708,11 @@
                 
                 <div class="ministry-card" id="youth-slider-card">
                     <div class="slider-container">
-                        <img src="https://via.placeholder.com/800x400/b8860b/FFFFFF?text=Youth+1" alt="Youth Ministry Image 1" class="slider-img active">
-                        <img src="https://via.placeholder.com/800x400/daa520/000000?text=Youth+2" alt="Youth Ministry Image 2" class="slider-img">
-                        <img src="https://via.placeholder.com/800x400/FFD700/000000?text=Youth+3" alt="Youth Ministry Image 3" class="slider-img">
+                        <img src="images/IMG-20251017-WA0026.jpg" alt="Youth Ministry Image 1" class="slider-img active">
+                        <img src="images/IMG-20251017-WA0004.jpg" alt="Youth Ministry Image 2" class="slider-img">
+                        <img src="images/IMG-20251017-WA0027.jpg" alt="Youth Ministry Image 3" class="slider-img">
+                        <img src="images/IMG-20251017-WA0023.jpg" alt="Youth Ministry Image 4" class="slider-img">
+                        <img src="images/WhatsApp Image 2025-10-17 at 11.12.19_735e0162.jpg" alt="Youth Ministry Image 5" class="slider-img">
                     </div>
                     <h3 class="ministry-title">Youth Ministry</h3>
                     <p>Empowering the next generation to live boldly for Christ and lead with purpose in a changing world.</p>
@@ -675,7 +721,7 @@
 
                 <div class="ministry-card" id="women-slider-card">
                     <div class="slider-container">
-                        <img src=" images/WhatsApp Image 2025-10-23 at 16.24.18_83dcc1b2.jpg" alt="Women's Ministry Image 1" class="slider-img active">
+                        <img src="images/WhatsApp Image 2025-10-23 at 16.24.18_83dcc1b2.jpg" alt="Women's Ministry Image 1" class="slider-img active">
                         <img src="images/WhatsApp Image 2025-10-23 at 16.24.15_72f6b0cc.jpg" alt="Women's Ministry Image 2" class="slider-img">
                         <img src="images/WhatsApp Image 2025-10-23 at 16.24.18_7a2ffd12.jpg" alt="Women's Ministry Image 3" class="slider-img">
                     </div>
@@ -683,12 +729,28 @@
                     <p>A supportive sisterhood dedicated to spiritual growth, mentorship, and impactful community outreach.</p>
                 </div>
                 
-                <div class="ministry-card">
+                <div class="ministry-card" id="men-slider-card"> 
                     <div style="font-size: 3rem; color: var(--gold-accent); margin-bottom: 1rem;"><i class="fas fa-male"></i></div>
                     <h3 class="ministry-title">Men's Ministry</h3>
                     <p>Challenging men to become spiritual leaders in their homes, church, and marketplace.</p>
+                    <div class="slider-container">
+                        <img src=" images/WhatsApp Image 2025-10-17 at 11.22.14_6e641044.jpg" alt="Men's Ministry Image 1" class="slider-img active">
+                        <img src=" images/IMG_5474[1].JPG" alt="Men's Ministry Image 2" class="slider-img">
+                        <img src=" images/WhatsApp Image 2025-10-17 at 11.15.43_33ffd20c.jpg" alt="Mens's Ministry Image 3" class="slider-img">
+                    </div>
                 </div>
-            </div>
+
+                <div class="ministry-card" id="transformers-slider-card">
+                    <div style="font-size: 3rem; color: var(--gold-accent); margin-bottom: 1rem;"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="ministry-title">Transformers Class</h3>
+                    <p>Discipleship training for new members to equip them with foundational truths and prepare them for ministry and Christian living.</p>
+                    <div class="slider-container">
+                        <img src="images/IMG_5871[1].JPG" alt="Transformers Class Image 1" class="slider-img active">
+                        <img src=" images/IMG_5879[1].JPG" alt="Transformers Class Image 2" class="slider-img">
+                        <img src="images/IMG_5867[1].JPG" alt="Transformers Class Image 3" class="slider-img">
+                    </div>
+                </div>
+                </div>
         </div>
     </section>
 
@@ -719,20 +781,22 @@
                 </div>
             </div>
         </div>
-    </section> <section id="announcements" class="section" style="background: var(--bg-secondary);">
+    </section>
+
+    <section id="announcements" class="section" style="background: var(--bg-secondary);">
         <div class="container">
             <h2 class="section-title">Church Announcements <span style="font-size: 0.7em; color: var(--text-secondary);">(18 October 2025)</span></h2>
 
             <div class="announcements-list">
                 <p style="text-align: center; font-style: italic; font-size: 1.1rem; margin-bottom: 2rem; color: var(--gold-accent);">
-                    **2025 THEME: THE YEAR OF DOING THE WORD FOR EXTRA ORDINARY RESULTS**
+                    **2025 THEME: THE YEAR OF DOING THE WORD FOR EXTRAORDINARY RESULTS**
                 </p>
 
-                <ul style="list-style: none; padding: 0;">
-                    <li style="background: var(--bg-primary); padding: 1.5rem; border-radius: 5px; margin-bottom: 1rem; box-shadow: 0 4px 8px var(--shadow-color);">
-                        <h3 style="font-family: 'Playfair Display', serif; color: var(--text-primary); margin-bottom: 0.5rem;">&#128336; Sunday Services Update (ANNOUNCEMENT 1)</h3>
+                <ul>
+                    <li>
+                        <h3>&#128336; Sunday Services Update (ANNOUNCEMENT 1)</h3>
                         <p style="color: var(--text-secondary);">The Church currently runs **2 (TWO) Sunday services** and small group meetings.</p>
-                        <ul style="list-style: disc; margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-secondary);">
+                        <ul>
                             <li>**First service:** 7:30hrs - 9:30 hrs.</li>
                             <li>**Small group meetings:** 9:30hrs - 10:10 hrs.</li>
                             <li>**Second service:** 10:20hrs - 12:30 hrs.</li>
@@ -740,33 +804,33 @@
                         <p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">You are encouraged to attend any or all two services. The Holy Spirit may speak differently in each service.</p>
                     </li>
 
-                    <li style="background: var(--bg-primary); padding: 1.5rem; border-radius: 5px; margin-bottom: 1rem; box-shadow: 0 4px 8px var(--shadow-color);">
-                        <h3 style="font-family: 'Playfair Display', serif; color: var(--text-primary); margin-bottom: 0.5rem;">&#128187; Online Prayer Meeting (ANNOUNCEMENT 2)</h3>
+                    <li>
+                        <h3>&#128187; Online Prayer Meeting (ANNOUNCEMENT 2)</h3>
                         <p style="color: var(--text-secondary);">Join us this coming **TUESDAY for the ONLINE PRAYER MEETING**.</p>
-                        <ul style="list-style: disc; margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-secondary);">
+                        <ul>
                             <li>**Time:** 20:30 to 21:30.</li>
-                            <li>**How to Join:** Google meets link shared on the God’s House main WhatsApp group.</li>
+                            <li>**How to Join:** Google meets link shared on the God's House main WhatsApp group.</li>
                         </ul>
-                        <p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">Let's do the word for extra ordinary results.</p>
+                        <p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">Let's do the word for extraordinary results.</p>
                     </li>
 
-                    <li style="background: var(--bg-primary); padding: 1.5rem; border-radius: 5px; margin-bottom: 1rem; box-shadow: 0 4px 8px var(--shadow-color);">
-                        <h3 style="font-family: 'Playfair Display', serif; color: var(--text-primary); margin-bottom: 0.5rem;">&#128591; Wednesday Prayer & Fasting (ANNOUNCEMENT 3)</h3>
+                    <li>
+                        <h3>&#128591; Wednesday Prayer & Fasting (ANNOUNCEMENT 3)</h3>
                         <p style="color: var(--text-secondary);">We invite everyone to take part in **praying and fast** this coming **Wednesday**.</p>
-                        <ul style="list-style: disc; margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-secondary);">
+                        <ul>
                             <li>**Duration:** 06:00hrs to 18:00hrs.</li>
                             <li>**Direction of Prayer:** Will be shared on Wednesday morning on the main WhatsApp group.</li>
                         </ul>
                     </li>
                     
-                    <li style="background: var(--bg-primary); padding: 1.5rem; border-radius: 5px; margin-bottom: 1rem; box-shadow: 0 4px 8px var(--shadow-color);">
-                        <h3 style="font-family: 'Playfair Display', serif; color: var(--text-primary); margin-bottom: 0.5rem;">&#127891; Transformers Class Graduation (ANNOUNCEMENT 4)</h3>
+                    <li>
+                        <h3>&#127891; Transformers Class Graduation (ANNOUNCEMENT 4)</h3>
                         <p style="color: var(--text-secondary);">The **Transformers class** will be graduating on **9th November 2025**.</p>
                         <p style="color: var(--text-secondary); margin-top: 0.5rem;">Church members, please start registering your invited guests with **Bro Sam**. Let's do it better than before.</p>
                     </li>
 
-                    <li style="background: var(--bg-primary); padding: 1.5rem; border-radius: 5px; box-shadow: 0 4px 8px var(--shadow-color);">
-                        <h3 style="font-family: 'Playfair Display', serif; color: var(--text-primary); margin-bottom: 0.5rem;">&#128105;&#8205;&#128187; Youth Meeting (ANNOUNCEMENT 5)</h3>
+                    <li>
+                        <h3>&#128105;&#8205;&#128187; Youth Meeting (ANNOUNCEMENT 5)</h3>
                         <p style="color: var(--text-secondary);">Calling all youth! Join us **immediately after the second service today for the Youth Meeting**.</p>
                         <p style="color: var(--text-secondary); margin-top: 0.5rem;">We need your ideas, energy, and passion to plan and prepare for the upcoming **Youth Conference**.</p>
                     </li>
@@ -775,43 +839,41 @@
 
         </div>
     </section>
+
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-info">
                 <p>
                     <i class="fas fa-map-marker-alt" style="color: var(--gold-accent);"></i> 
-                    <strong>Physical Address:</strong> [Insert Full Church Location Address Here]
+                    <strong>Physical Address:</strong> Linda Road, Lusaka, Zambia
                 </p>
                 <p>
                     <i class="fas fa-phone" style="color: var(--gold-accent);"></i> 
                     <strong>Phone/Airtel Money:</strong> 0779 234294 (Mainga Nkombo)
                 </p>
-                 <p>
+                <p>
                     <i class="fas fa-mobile-alt" style="color: var(--gold-accent);"></i> 
                     <strong>MTN Money:</strong> 0964 670638 (Mainga Nkombo)
                 </p>
-                 <p>
+                <p>
                     <i class="fas fa-university" style="color: var(--gold-accent);"></i> 
                     <strong>Bank Account (Tithes/Offerings):</strong> FNB - 62816044408 (Church Account)
                 </p>
                 <p>
                     <i class="fas fa-envelope" style="color: var(--gold-accent);"></i> 
-                    <strong>Email:</strong> <a href="mailto:info@godshouse.org">info@godshouse.org</a> (Placeholder)
+                    <strong>Email:</strong> <a href="mailto:info@godshouse.org">info@godshouse.org</a>
                 </p>
             </div>
 
             <div class="map-container">
-                <p>
-                    [Placeholder for Google Map or Directions Embedded Iframe]
-                    <br>
-                    Physical Address: [Insert Full Church Location Address Here]
-                </p>
+                <img src="images/WhatsApp Image 2025-10-17 at 11.15.43_3fc36d0b.jpg" 
+                     alt="Map or Image of Church Location">
             </div>
             
             <div class="social-media">
                 <p>Connect with us on Social Media</p>
-                <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href=" https://www.facebook.com/profile.php?id=61583158734859" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.twitter.com/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
@@ -833,7 +895,6 @@
             const body = document.body;
             body.classList.toggle('dark-mode');
             
-            // Save preference to localStorage
             if (body.classList.contains('dark-mode')) {
                 localStorage.setItem('theme', 'dark');
             } else {
@@ -841,7 +902,6 @@
             }
         }
 
-        // Load saved theme preference
         document.addEventListener('DOMContentLoaded', () => {
             if (localStorage.getItem('theme') === 'dark') {
                 document.body.classList.add('dark-mode');
@@ -857,7 +917,6 @@
             navLinks.classList.toggle('active');
         });
         
-        // Close menu when a link is clicked (on mobile)
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
@@ -892,26 +951,18 @@
             
             if (images.length === 0) return;
 
-            // Ensure the first image is active on load
             images[currentImageIndex].classList.add('active');
 
-
             function nextImage() {
-                // Remove 'active' from current image
                 images[currentImageIndex].classList.remove('active');
-                
-                // Calculate next image index
                 currentImageIndex = (currentImageIndex + 1) % images.length;
-                
-                // Add 'active' to next image
                 images[currentImageIndex].classList.add('active');
             }
 
-            // Start the slider, changing image every 3 seconds (3000 milliseconds)
             setInterval(nextImage, 3000);
         }
 
-        // --- Women's Ministry Image Slider Logic (NEW) ---
+        // --- Women's Ministry Image Slider Logic ---
         function startWomenSlider() {
             const sliderContainer = document.querySelector('#women-slider-card .slider-container');
             if (!sliderContainer) return;
@@ -921,32 +972,66 @@
             
             if (images.length === 0) return;
 
-            // Ensure the first image is active on load
             images[currentImageIndex].classList.add('active');
 
-
             function nextImage() {
-                // Remove 'active' from current image
                 images[currentImageIndex].classList.remove('active');
-                
-                // Calculate next image index
                 currentImageIndex = (currentImageIndex + 1) % images.length;
-                
-                // Add 'active' to next image
                 images[currentImageIndex].classList.add('active');
             }
 
-            // Start the slider, changing image every 4 seconds (4000 milliseconds)
             setInterval(nextImage, 4000); 
         }
 
-        // Run the slider functions when the page loads
+        // --- Men's Ministry Image Slider Logic ---
+        function startMenSlider() {
+            const sliderContainer = document.querySelector('#men-slider-card .slider-container');
+            if (!sliderContainer) return;
+            
+            const images = sliderContainer.querySelectorAll('.slider-img');
+            let currentImageIndex = 0;
+            
+            if (images.length === 0) return;
+
+            images[currentImageIndex].classList.add('active');
+
+            function nextImage() {
+                images[currentImageIndex].classList.remove('active');
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                images[currentImageIndex].classList.add('active');
+            }
+
+            setInterval(nextImage, 4000); 
+        }
+
+        // --- Transformers Class Image Slider Logic (NEW) ---
+        function startTransformersSlider() {
+            const sliderContainer = document.querySelector('#transformers-slider-card .slider-container');
+            if (!sliderContainer) return;
+            
+            const images = sliderContainer.querySelectorAll('.slider-img');
+            let currentImageIndex = 0;
+            
+            if (images.length === 0) return;
+
+            images[currentImageIndex].classList.add('active');
+
+            function nextImage() {
+                images[currentImageIndex].classList.remove('active');
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                images[currentImageIndex].classList.add('active');
+            }
+
+            // Set the slider to change image every 5 seconds
+            setInterval(nextImage, 5000); 
+        }
+        
         document.addEventListener('DOMContentLoaded', () => {
             startYouthSlider();
             startWomenSlider(); 
+            startMenSlider(); 
+            startTransformersSlider(); // Initialize the new Transformers Class slider
         });
-
-
     </script>
 </body>
 </html>
